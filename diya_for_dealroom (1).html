@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diya Bhatia → Shamus Madan, Dealroom Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-deep: #ebe1cf;
+    --ink: #1a1a18;
+    --ink-soft: #3d3a35;
+    --ink-mute: #6b6660;
+    --red: #c1392b;
+    --highlight: #f6d34a;
+    --rule: rgba(26, 26, 24, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Fraunces', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,0.018) 1px, transparent 1px);
+    background-size: 4px 4px, 7px 7px;
+    background-position: 0 0, 2px 3px;
+  }
+
+  ::selection { background: var(--highlight); color: var(--ink); }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 64px 40px 120px;
+  }
+
+  .stamp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0 14px;
+    margin-bottom: 56px;
+    gap: 24px;
+  }
+  .stamp-row .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    line-height: 1.7;
+  }
+  .stamp-row .meta strong { color: var(--ink); font-weight: 700; }
+  .stamp-circle {
+    border: 1.5px solid var(--red);
+    color: var(--red);
+    border-radius: 50%;
+    width: 92px;
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(-7deg);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .stamp-circle span:first-child { font-weight: 700; font-size: 10px; }
+
+  .hero { margin-bottom: 80px; position: relative; }
+  .hero .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 6.4vw, 78px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 36px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+  }
+  .hero h1 .marker {
+    background: linear-gradient(180deg, transparent 60%, var(--highlight) 60%);
+    padding: 0 4px;
+  }
+  .hero .lede {
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 680px;
+    font-weight: 400;
+  }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+  .hero .signature {
+    margin-top: 36px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .section { margin: 96px 0; position: relative; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(30px, 4.2vw, 46px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    max-width: 760px;
+  }
+  .section h2 em { font-style: italic; color: var(--red); }
+
+  .receipts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+  .receipt {
+    padding: 28px 24px;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .receipt:last-child { border-right: none; }
+  .receipt .num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+  }
+  .receipt .num .unit {
+    font-size: 24px;
+    color: var(--red);
+    font-weight: 400;
+  }
+  .receipt .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    margin: 24px 0 32px;
+  }
+  .two-col .side {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    line-height: 1.6;
+    padding-top: 6px;
+  }
+  .two-col .body p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    color: var(--ink-soft);
+  }
+  .two-col .body p strong { color: var(--ink); font-weight: 600; }
+
+  .pullquote {
+    border-left: 3px solid var(--red);
+    padding: 8px 0 8px 28px;
+    margin: 40px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 720px;
+  }
+  .pullquote .attr {
+    display: block;
+    margin-top: 14px;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+
+  .samples-intro {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    max-width: 700px;
+  }
+
+  .sample {
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    position: relative;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sample:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .sample-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .sample-head .who {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .sample-head .who span {
+    color: var(--ink-mute);
+    font-weight: 400;
+    font-style: italic;
+  }
+  .sample-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 8px;
+  }
+
+  .sample .body {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .sample .body p { margin-bottom: 12px; }
+  .sample .body p:last-child { margin-bottom: 0; }
+
+  .sample-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--rule);
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
+  .sample-note::before { content: '→ '; }
+
+  .india-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .india-card {
+    border: 1px solid var(--ink);
+    padding: 24px;
+    background: var(--paper);
+  }
+  .india-card .num-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+  }
+  .india-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .india-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .cta {
+    margin-top: 96px;
+    border-top: 2px solid var(--ink);
+    padding-top: 48px;
+  }
+  .cta h2 {
+    font-size: clamp(34px, 5vw, 54px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .cta h2 em { font-style: italic; }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 16px 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border: 2px solid var(--ink);
+  }
+  .btn-primary:hover { background: var(--red); border-color: var(--red); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .btn-secondary:hover { background: var(--highlight); }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 32px 24px 80px; }
+    .receipts-grid { grid-template-columns: 1fr; }
+    .receipt { border-right: none; border-bottom: 1px solid var(--rule); }
+    .receipt:last-child { border-bottom: none; }
+    .two-col { grid-template-columns: 1fr; gap: 16px; }
+    .india-grid { grid-template-columns: 1fr; }
+    .stamp-row { flex-direction: column; gap: 18px; }
+    .stamp-circle { align-self: flex-end; }
+    .sample { padding: 24px 20px; }
+  }
+
+  .fade {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise 0.7s ease forwards;
+  }
+  .fade.d1 { animation-delay: 0.05s; }
+  .fade.d2 { animation-delay: 0.15s; }
+  .fade.d3 { animation-delay: 0.28s; }
+  .fade.d4 { animation-delay: 0.42s; }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="stamp-row fade d1">
+    <div class="meta">
+      <div><strong>From:</strong> Diya Bhatia · Jaipur, IN</div>
+      <div><strong>To:</strong> Shamus Madan · Dealroom Media · NYC</div>
+      <div><strong>Re:</strong> The role you posted on LinkedIn</div>
+      <div><strong>Filed:</strong> April 2026</div>
+    </div>
+    <div class="stamp-circle">
+      <span>NOT A</span>
+      <span>RESUMÉ</span>
+      <span>·</span>
+      <span>A RECEIPT</span>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="kicker fade d1">A pitch in the form of proof</div>
+    <h1 class="fade d2">
+      You're scaling a content engine for founders. <em>I've been the engine</em> for the last <span class="marker">five years.</span>
+    </h1>
+    <p class="lede fade d3">
+      Hi Shamus. I read the role. You're hiring someone who can ghostwrite for B2B founders,
+      run cadence, and turn LinkedIn into pipeline. <strong>I've done exactly that, end to end,
+      since I was 19.</strong> This page is me showing the work instead of explaining it.
+    </p>
+    <div class="signature fade d4">↓ four minutes · samples in your voice below</div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Receipts, first</div>
+    <h2>The numbers that matter for the role you posted.</h2>
+
+    <div class="receipts-grid">
+      <div class="receipt">
+        <div class="num">7M<span class="unit">+</span></div>
+        <div class="label">LinkedIn impressions<br/>driven for one founder</div>
+      </div>
+      <div class="receipt">
+        <div class="num">26<span class="unit"> → </span>50<span class="unit">K</span></div>
+        <div class="label">Followers grown<br/>on the same account</div>
+      </div>
+      <div class="receipt">
+        <div class="num">6<span class="unit">%</span></div>
+        <div class="label">Sales pipeline lift<br/>from social, attributed</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="side">What I actually did</div>
+      <div class="body">
+        <p>I run a founder's personal brand end to end. <strong>Narrative positioning, weekly cadence, ghostwriting in their voice, comment engagement, and the automation underneath.</strong> Make.com and n8n for outreach and engagement. Weekly metrics review so we kill what isn't working in week two, not month three.</p>
+        <p>The 7M number isn't vanity. It's tied to a 6% pipeline lift the sales team agreed to attribute to LinkedIn specifically. Two other founder accounts I ran on the side hit 4.5 lakh and 2 lakh impressions in under a month each, from cold starts.</p>
+        <p>If your bottleneck is "we have more founders we could take on if we had another senior strategist who can run an account without supervision," that's the seat I want.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      Nobody gets convinced by a demo. They get convinced by a receipt.
+      <span class="attr">— Jesse Zhang, Decagon</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Three samples</div>
+    <h2>Three founder posts I've written, <em>across three different lanes.</em></h2>
+    <p class="samples-intro">
+      The contrarian sales story, the spicy industry take, the field-note observation.
+      Three different founders, three different categories, one consistent muscle: writing
+      in a voice that sounds like the person whose name is on the post, not the writer behind it.
+    </p>
+
+    <article class="sample">
+      <div class="sample-head">
+        <div class="who">Sample 01 <span>· Jesse Zhang, Decagon</span></div>
+        <div class="tag">Receipts</div>
+      </div>
+      <div class="body">
+<p>A Fortune 500 CRO told me our AI couldn't handle their support.</p>
+<p>Too messy, too regulated, too much at stake. Fair.</p>
+<p>Cut to last week; they expanded us to a second business unit.</p>
+<p>The model didn't change their minds.</p>
+<p>We stopped pitching. We started sending transcripts.</p>
+<p>50 real conversations a week.</p>
+<p>The customer asked X, the agent said Y, and here's why Y was right.</p>
+<p>No slides. No benchmarks.</p>
+<p>Just the work, on their desk, every Monday.</p>
+<p>Turns out the hardest part of enterprise AI isn't the AI.</p>
+<p>It's convincing someone who's been burned by three vendors that this time is different.</p>
+<p>Nobody gets convinced by a demo.</p>
+<p>They get convinced by a receipt.</p>
+<p>We send every prospect 50 transcripts before the second call now.</p>
+<p>The close rate went up by 4x.</p>
+<p>The product didn't get better. The proof just got louder.</p>
+<p>Curious if other AI founders are doing this. What does your version of "the transcript" look like?</p>
+      </div>
+      <div class="sample-note">The contrarian opener, the "we stopped X, started Y" pivot, the question that turns the comments section into a conversation between founders. Structure carries the post.</div>
+    </article>
+
+    <article class="sample">
+      <div class="sample-head">
+        <div class="who">Sample 02 <span>· Matt Watson, Full Scale</span></div>
+        <div class="tag">Spicy take</div>
+      </div>
+      <div class="body">
+<p>Forrester dropped a report this week that I've been thinking about all morning.</p>
+<p>55% of companies that laid people off for AI now regret it.</p>
+<p>And half of those workers are getting quietly rehired, offshore.</p>
+<p>So let me get this straight.</p>
+<p>Step 1: Fire your US engineers because AI can do their job. Step 2: Realize AI can't actually do their job. Step 3: Hire offshore engineers to do the job AI couldn't do. Step 4: Pretend this was the plan all along.</p>
+<p>I've been running an offshore dev company for 7 years.</p>
+<p>I'll tell you the secret nobody in tech media will say out loud.</p>
+<p>Most companies that try offshore talent do it wrong.</p>
+<p>They treat it as a cost-cutting move by hiring the cheapest person they can find.</p>
+<p>give them tickets instead of ownership.</p>
+<p>And then they're shocked when the code is bad.</p>
+<p>That's not a talent problem. That's a management problem.</p>
+<p>The companies that actually win with offshore talent treat those engineers the same way they'd treat a senior US hire.</p>
+<p>Same onboarding. Same context. Same trust.</p>
+<p>You'd be amazed at how often that's the difference between "offshore doesn't work" and "offshore is our best team."</p>
+<p>Klarna laid off 700 people for AI, quality tanked, customers revolted, and now they're rehiring humans.</p>
+<p>That story isn't about AI.</p>
+<p>It's about companies making headcount decisions based on hype instead of how software actually gets built.</p>
+<p>AI isn't replacing developers in 2026.</p>
+<p>It's exposing which managers were paying for code and which ones were paying for judgment.</p>
+      </div>
+      <div class="sample-note">Stat-then-twist opener, the sarcastic four-step reframe that earns the right to the punchline, then a closer that lands like a verdict.</div>
+    </article>
+
+    <article class="sample">
+      <div class="sample-head">
+        <div class="who">Sample 03 <span>· Ali Hussain, Tabs</span></div>
+        <div class="tag">Field note</div>
+      </div>
+      <div class="body">
+<p>I spent an afternoon with a finance team at a $40M ARR SaaS company last month.</p>
+<p>6 people, 3 tools, and a shared inbox literally called "invoicing-pls-help."</p>
+<p>I'm not making this up.</p>
+<p>Every month, they read 400 signed contracts by hand, typed the terms into NetSuite, and then spent a Friday reconciling the mismatches on a call that everybody hated.</p>
+<p>This is one of the best-run startups I know, by the way.</p>
+<p>I asked the CFO why they hadn't fixed it.</p>
+<p>He said, "We just keep hiring our way out of it."</p>
+<p>That sentence has been stuck in my head for weeks.</p>
+<p>This is the part of SaaS nobody puts on the revenue dashboard.</p>
+<p>The headcount that only exists because the contract and the invoice don't talk to each other.</p>
+<p>We've mapped this at 60 companies now, and the median Series B is spending something like $800K a year on people, being a translation layer between sales and finance.</p>
+<p>That number goes to zero in the next few years.</p>
+<p>Not because AI is magic. Because the data was sitting there the whole time.</p>
+<p>Nobody was bored enough to actually read it.</p>
+      </div>
+      <div class="sample-note">A specific scene, the unforgettable quote, the "this isn't on the dashboard" reframe, a quiet kicker that does more work than a louder one would.</div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Why I'd add to the team, not just the headcount</div>
+    <h2>Most brand strategists write. <em>I write and build the system underneath.</em></h2>
+
+    <div class="two-col">
+      <div class="side">Tools I run</div>
+      <div class="body">
+        <p><strong>Make.com and n8n</strong> for LinkedIn outreach, comment engagement, and lead routing. <strong>Notion</strong> for the editorial calendar and weekly metrics review. <strong>Claude and ChatGPT</strong> for first drafts I then strip down to founder voice. <strong>Meta Business Suite</strong> for cross-platform repost where it makes sense.</p>
+        <p>The reason I obsess over automation is that great content alone is a leaky bucket. A viral post with no comment engine, no DM follow-up, no lead-tracking workflow behind it is just impressions. I've built that engine for one founder and it's part of what produced the 6% pipeline number.</p>
+        <p>If Dealroom Media is hitting "we have more founders to take on than people to staff them" as a bottleneck, that's the exact problem I want to solve. More accounts run well, with less manual lift per account.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The Jaipur question</div>
+    <h2>I'm in India. <em>Here's why that's an unfair advantage</em> for the kind of agency you're building.</h2>
+
+    <div class="india-grid">
+      <div class="india-card">
+        <div class="num-tag">01 / Timezone</div>
+        <h3>Your morning in NYC is my evening.</h3>
+        <p>Drafts, scheduled posts, and weekly metrics reports waiting in your inbox before your first coffee. The 9.5 hour offset means I get a full work block done while your team is asleep, then we sync on US morning. For a content agency, that's effectively a 16-hour ops window, not an 8-hour one.</p>
+      </div>
+      <div class="india-card">
+        <div class="num-tag">02 / Voice</div>
+        <h3>I write in English, not translated English.</h3>
+        <p>Five years writing for Microsoft, MakeMyTrip, Tinder, Parle, with placements in TechCrunch, LiveMint, and Hindustan Times. The three samples on this page were drafted in under two hours each. Voice match is the actual job and I've been training that muscle since 2020.</p>
+      </div>
+      <div class="india-card">
+        <div class="num-tag">03 / Unit economics</div>
+        <h3>Senior output, agency margins that work.</h3>
+        <p>For a content shop, the math is brutal: every senior writer eats per-account margin. Hiring me means you get the work of someone who's already taken a founder to 50K and 7M impressions, at a cost structure that lets you run more accounts profitably. That's a margin lever, not a discount.</p>
+      </div>
+      <div class="india-card">
+        <div class="num-tag">04 / Async by default</div>
+        <h3>I've worked with US and UK clients for years.</h3>
+        <p>Quantiphi alone meant managing UK clients across a five hour gap for two years. Slack-first, Loom for nuance, never a chaotic schedule. Async isn't a workaround, it's how I work. For a remote-first NYC agency taking on founders across timezones already, I'm a clean fit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>If even one of those samples felt close to a Dealroom Media post, <em>let's talk.</em></h2>
+    <p class="samples-intro">
+      I'd love a 30 minute call. I'll come with a 30/60/90 plan for how I'd run a founder account in my first quarter,
+      three more sample posts in any voice you want me to try, and the automation stack I'd set up in week one.
+      No deck. No "tell me about your goals." Just receipts.
+    </p>
+    <div class="cta-row">
+      <a href="mailto:bhatiadiya44@gmail.com?subject=Re%3A%20Dealroom%20Media%20role%20%E2%80%94%20Diya%20Bhatia" class="btn btn-primary">Email me &nbsp;→</a>
+      <a href="https://www.linkedin.com/in/diyabhatiaa/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="tel:+919828301333" class="btn btn-secondary">+91 98283 01333</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>Diya Bhatia · Personal Brand Strategist · Jaipur, IN</div>
+    <div>Made for Shamus, not a template</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
