@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthi — A note from Diya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --card: #161616;
+    --border: #222222;
+    --red: #e63030;
+    --red-dim: #8c1e1e;
+    --white: #f0ece6;
+    --muted: #666666;
+    --mono: 'DM Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* Top bar */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--black);
+    z-index: 100;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .topbar-left {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .topbar-right {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 100px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+    color: var(--white);
+  }
+
+  h1 span {
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: #aaa;
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+  }
+
+  /* Stat strip */
+  .stat-strip {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: 0 48px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeUp 0.8s ease 0.25s both;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 32px 36px;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-num span { color: var(--red); }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Why section */
+  .section {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .five-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    animation: fadeUp 0.8s ease 0.35s both;
+  }
+
+  .five-item {
+    background: var(--card);
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .five-item:hover { background: #1c1c1c; }
+
+  .five-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--red);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .five-item:hover::before { opacity: 1; }
+
+  .five-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+  }
+
+  .five-title {
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+
+  .five-body {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .five-body strong {
+    color: #bbb;
+    font-weight: 400;
+  }
+
+  /* The gap section — arthi specific */
+  .gap-section {
+    padding: 0 48px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+
+  .gap-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 64px;
+    position: relative;
+  }
+
+  .gap-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), transparent);
+  }
+
+  .gap-headline {
+    font-family: var(--display);
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+
+  .gap-body {
+    font-size: 16px;
+    color: #888;
+    line-height: 1.7;
+    max-width: 680px;
+    font-weight: 300;
+  }
+
+  .gap-body strong { color: #ccc; font-weight: 400; }
+
+  /* Results strip */
+  .results-strip {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+
+  .results-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .results-inner {
+    display: flex;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .result-stat {
+    flex: 1;
+    padding: 48px 44px;
+  }
+
+  .result-num {
+    font-family: var(--display);
+    font-size: 56px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .result-num span { color: var(--red); }
+
+  .result-desc {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .result-divider {
+    width: 1px;
+    height: 80px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* Sample posts */
+  .posts-section {
+    padding: 0 48px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .post-card {
+    border: 1px solid var(--border);
+    padding: 40px 44px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.3s;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .post-card:nth-child(1) { animation-delay: 0.3s; }
+  .post-card:nth-child(2) { animation-delay: 0.4s; }
+  .post-card:nth-child(3) { animation-delay: 0.5s; }
+
+  .post-card:hover { border-color: #444; }
+
+  .post-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--red);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .post-text {
+    font-size: 15px;
+    color: #999;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .post-text p { margin-bottom: 12px; }
+  .post-text p:last-child { margin-bottom: 0; }
+
+  /* CTA */
+  .cta-section {
+    padding: 0 48px 120px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+
+  .cta-inner {
+    border: 1px solid var(--border);
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 20%; right: 20%;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .cta-title {
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+  }
+
+  .cta-sub {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 48px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: #c42828;
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .topbar, .hero, .section, .gap-section, .posts-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .stat-strip { margin: 0 24px; flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .five-grid { grid-template-columns: 1fr; }
+    .gap-card { padding: 40px 28px; }
+    .cta-inner { padding: 48px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-left">Diya Bhatia — Founder Brand Strategist</span>
+  <span class="topbar-right">For: Arthi Rajan Makhija</span>
+</div>
+
+<section class="hero">
+  <div class="label">A personal note</div>
+  <h1>Arthi,<br>your story<br>is <span>invisible.</span></h1>
+  <p class="hero-sub">You spent 20 years at the intersection of fraud, identity, and payments. Not as an observer, but as an operator. You just closed a $5M seed. You have a Series A to raise before it gets crowded. And almost nothing is on your LinkedIn. Let's fix that before it costs you.</p>
+</section>
+
+<div class="stat-strip">
+  <div class="stat">
+    <div class="stat-num">20<span>yr</span></div>
+    <div class="stat-label">Fraud, identity<br>and payments</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$1<span>B+</span></div>
+    <div class="stat-label">Loss budget<br>managed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$5<span>M</span></div>
+    <div class="stat-label">Seed closed<br>Jan 2026</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Competitors with<br>a real LinkedIn voice</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-label">Why this matters for Pinch</div>
+  <div class="five-grid">
+    <div class="five-item">
+      <div class="five-num">01</div>
+      <div class="five-title">SHORTER SALES CYCLES</div>
+      <div class="five-body">When a retail CFO Googles you before a meeting and finds <strong>sharp, specific thinking on fraud</strong>, the meeting starts at trust. Not at "who are you again." Enterprise teams report 15-30% shorter sales cycles when the founder has a visible, credible point of view. Your two decades of operator experience should be doing this work. It isn't yet.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">02</div>
+      <div class="five-title">LOWER CAC</div>
+      <div class="five-body">Inbound leads who find you through content close at <strong>3-5x the rate of cold outbound</strong>. One good post about the 7%/70% returns stat, the kind only you can write credibly, will land in front of the exact VPs and CFOs you are paying SDRs to reach. The math is not close.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">03</div>
+      <div class="five-title">FASTER FUNDRAISING</div>
+      <div class="five-body">VCs do diligence on founders by reading them. A founder who <strong>publicly thinks through the problem</strong> they are solving gets warmer intros, fewer "we need to do more diligence" delays, and better terms. Your Series A window is open. The VCs evaluating you will search your name. Right now they find one press cycle.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">04</div>
+      <div class="five-title">AN ORGANIC HIRING FUNNEL</div>
+      <div class="five-body">The best fraud and risk engineers do not apply to job posts. They <strong>follow founders they respect</strong> and message when they are ready to move. You are building in one of the hardest engineering-talent categories. A recruiter costs 25% of base salary. Two hires saved per year covers an entire content operation.</div>
+    </div>
+    <div class="five-item" style="grid-column: span 2;">
+      <div class="five-num">05</div>
+      <div class="five-title">OPTIONALITY</div>
+      <div class="five-body">Whatever happens with Pinch, scale, pivot, acquisition, or next company, <strong>your reputation compounds independently of your company</strong>. The founders who built a public voice before they needed it always have more doors open than the ones who waited. You have 20 years of fraud and payments expertise. That does not appear anywhere public right now.</div>
+    </div>
+  </div>
+</section>
+
+<div class="gap-section">
+  <div class="gap-card">
+    <div class="label" style="margin-bottom: 20px;">The competitive gap</div>
+    <div class="gap-headline">The fraud-tech space<br>is quiet on LinkedIn.<br>That's your opening.</div>
+    <div class="gap-body">
+      Signifyd's CEO has media coverage on CNN and CNBC but not a personal LinkedIn voice. Forter and Riskified are the same. No one in return-fraud technology is building a real, consistent content presence right now. <strong>The category is unclaimed.</strong> The "operator who spent 20 years in fraud and identity, managed a $1B+ loss budget, and built Pinch from that foundation" is a position sitting empty. You should occupy it before anyone else figures out it exists.
+    </div>
+  </div>
+</div>
+
+<div class="results-strip">
+  <div class="results-label">What Diya has driven for founders like you</div>
+  <div class="results-inner">
+    <div class="result-stat">
+      <div class="result-num">7<span>M+</span></div>
+      <div class="result-desc">LinkedIn impressions driven<br>for one founder</div>
+    </div>
+    <div class="result-divider"></div>
+    <div class="result-stat">
+      <div class="result-num">26 <span>→</span> 50<span>K</span></div>
+      <div class="result-desc">Followers grown<br>on the same account</div>
+    </div>
+    <div class="result-divider"></div>
+    <div class="result-stat">
+      <div class="result-num">6<span>%</span></div>
+      <div class="result-desc">Sales pipeline lift<br>from socials</div>
+    </div>
+  </div>
+</div>
+
+<section class="posts-section">
+  <div class="section-label">Three posts, written in your voice — free, no strings</div>
+
+  <div class="post-card">
+    <div class="post-tag">Post 01 — The operator perspective no one else has</div>
+    <div class="post-text">
+      <p>I managed a $1B+ loss budget. Ran teams across four countries. Led the integration of two acquisitions, each with its own P&L, roadmap, and revenue targets.</p>
+      <p>That is not a fraud background. That is a business background that happens to be expressed through fraud.</p>
+      <p>Most people in risk see the problem through one lens. Either as a technologist who wants to build better models, or as an operator who wants to write tighter policies. I have had to hold both at the same time, inside a Fortune 500 company, with real revenue on the line.</p>
+      <p>What that taught me is this. Fraud is never just a fraud problem. It is always a business problem wearing a fraud mask. When you treat it as anything less, you end up with metrics that look good on paper and customers who are quietly leaving.</p>
+      <p>That is the thing we built Pinch to fix.</p>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-tag">Post 02 — The founder origin story</div>
+    <div class="post-text">
+      <p>I am not a very active poster on LinkedIn. That is not a humblebrag. It is just true.</p>
+      <p>For two decades I was heads down at the intersection of fraud, identity, and payments. Not as an observer. As an operator. The work was loud. My voice was not.</p>
+      <p>After I left, I took a CPO role at a healthcare startup. Building outside a large enterprise taught me things I could not have learned any other way. How to move fast with incomplete information. How to make calls when no one above you is signing off. How to stay resilient when the org chart stops being a safety net.</p>
+      <p>That experience made me a better founder than I would have been if I had come straight from a large company.</p>
+      <p>Today I run Pinch AI. We help ecommerce brands stop return abuse and first-party fraud, turning returns from a cost center into a strategic control point. I started writing here because the things we are seeing inside enterprise retail right now are not showing up in the reports. I want to change that.</p>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-tag">Post 03 — What it costs when you get it wrong</div>
+    <div class="post-text">
+      <p>A reporter asked me last week why there are so few women in fraud and risk.</p>
+      <p>I gave the polite answer. Then I sat with the real one for a few days.</p>
+      <p>Fraud is a domain that rewards two things at the same time: deep technical pattern recognition and deep customer empathy. Most teams treat those as opposite skills. One belongs to engineering, one belongs to support.</p>
+      <p>The best fraud leaders hold both at once. They can look at a transaction graph and see a story. They can read a customer complaint and see a signal. They know what it costs when you get it wrong, not just in dollars, but in customer trust and brand reputation.</p>
+      <p>I have spent 20 years in this discipline. The operators who win are the ones who refuse to let fraud become just a cost center. At Pinch we are building on exactly that idea.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Diya Bhatia · Founder Personal Brand Strategist</span>
+  <span>Built for Arthi Rajan Makhija · Pinch AI</span>
+</footer>
+
+</body>
+</html>

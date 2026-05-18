@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulsah — A note from Diya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #f2ede5;
+    --warm: #ede6da;
+    --white: #faf8f5;
+    --terracotta: #b85c38;
+    --terracotta-soft: #f5e8e2;
+    --forest: #2c4a3e;
+    --forest-soft: #e4ede9;
+    --ink: #1e1a16;
+    --ink-soft: #4a4540;
+    --ink-muted: #9a948c;
+    --rule: #ddd7ce;
+    --display: 'Cormorant Garamond', serif;
+    --sans: 'Montserrat', sans-serif;
+    --mono: 'Courier Prime', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  header {
+    padding: 0 60px;
+    border-bottom: 1px solid var(--rule);
+    animation: fadeIn 0.6s ease both;
+  }
+
+  .header-top {
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header-top span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+  }
+
+  .header-brand {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .header-tag {
+    background: var(--terracotta);
+    color: white;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    font-style: italic;
+  }
+
+  /* Hero split */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    min-height: 520px;
+    animation: fadeIn 0.8s ease 0.15s both;
+  }
+
+  .hero-left {
+    background: var(--forest);
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 140px;
+    height: 140px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-bottom: 40px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  h1 span {
+    display: block;
+    font-size: 0.6em;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    margin-top: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-right {
+    background: var(--sand);
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-desc {
+    font-family: var(--display);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  .logo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .logo-list-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .logo-item::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  /* Story section */
+  .story-section {
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    border-bottom: 1px solid var(--rule);
+    animation: fadeUp 0.8s ease 0.25s both;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .story-title {
+    font-family: var(--display);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .story-title em { font-style: italic; color: var(--terracotta); }
+
+  .story-body {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .story-body p { margin-bottom: 16px; }
+  .story-body p:last-child { margin-bottom: 0; }
+  .story-body strong { color: var(--ink); font-weight: 500; }
+
+  /* Five reasons */
+  .five-section {
+    background: var(--sand);
+    padding: 100px 60px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .five-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    margin-top: 52px;
+  }
+
+  .five-item {
+    background: var(--white);
+    padding: 44px 36px;
+    transition: background 0.3s;
+  }
+
+  .five-item:hover { background: var(--terracotta-soft); }
+
+  .five-num {
+    font-family: var(--display);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+
+  .five-title {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .five-body {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  .five-body strong { color: var(--ink); font-weight: 500; }
+
+  /* Results strip */
+  .results-strip {
+    background: var(--sand);
+    padding: 80px 60px;
+    animation: fadeUp 0.8s ease 0.32s both;
+  }
+
+  .results-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .results-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+  }
+
+  .result-stat {
+    background: var(--white);
+    padding: 44px 40px;
+  }
+
+  .result-num {
+    font-family: var(--display);
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .result-num span { color: var(--terracotta); }
+
+  .result-desc {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* Posts */
+  .posts-section {
+    padding: 100px 60px;
+    animation: fadeUp 0.8s ease 0.35s both;
+  }
+
+  .posts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin-top: 52px;
+  }
+
+  .post-card {
+    border-top: 2px solid var(--ink);
+    padding-top: 28px;
+  }
+
+  .post-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .post-text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .post-text p { margin-bottom: 10px; }
+  .post-text p:last-child { margin-bottom: 0; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--forest);
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 80px;
+    align-items: center;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+
+  .cta-left {
+    color: white;
+  }
+
+  .cta-left .section-label {
+    color: rgba(255,255,255,0.35);
+  }
+
+  .cta-left .section-label::after {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .cta-title {
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: white;
+    margin-bottom: 24px;
+  }
+
+  .cta-title em { font-style: italic; color: var(--terracotta); }
+
+  .cta-body {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+
+  .cta-right {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 48px;
+  }
+
+  .cta-right-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .cta-right-points {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  .cta-right-points li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .cta-right-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+  }
+
+  .cta-btn {
+    display: block;
+    background: var(--terracotta);
+    color: white;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: #a34e2f;
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-style: italic;
+  }
+
+  footer {
+    background: #1a2e27;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    header, .story-section, .five-section, .posts-section, .cta-section, footer { padding-left: 24px; padding-right: 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 28px; }
+    .hero-right { padding: 40px 28px; }
+    .story-section { grid-template-columns: 1fr; gap: 40px; }
+    .five-grid { grid-template-columns: 1fr; }
+    .posts-row { grid-template-columns: 1fr; }
+    .cta-section { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span>A direct note · May 2026</span>
+    <span>Diya Bhatia · Founder Brand Strategist</span>
+  </div>
+  <div class="header-main">
+    <div class="header-brand">For Gulsah Gulser</div>
+    <div class="header-tag">Personal · Not for distribution</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">A personal note from Diya</div>
+    <h1>
+      Gulsah,<br>
+      you have<br>
+      <em>M&S, IKEA,<br>Calvin Klein.</em>
+      <span>And almost no one outside your industry knows that.</span>
+    </h1>
+  </div>
+  <div class="hero-right">
+    <div class="hero-desc">You and Gonca built something remarkable. A two-sister AI company with enterprise customers that most Series B startups would trade everything for. The story isn't out there yet.</div>
+    <div class="logo-list">
+      <div class="logo-list-label">Your customer logos</div>
+      <div class="logo-item">Marks & Spencer</div>
+      <div class="logo-item">IKEA</div>
+      <div class="logo-item">Calvin Klein</div>
+      <div class="logo-item">Under Armour</div>
+      <div class="logo-item">Decathlon</div>
+    </div>
+  </div>
+</section>
+
+<section class="story-section">
+  <div>
+    <div class="section-label">The untapped narrative</div>
+    <div class="story-title">The sister-led<br>AI company <em>nobody<br>is writing about.</em></div>
+  </div>
+  <div class="story-body">
+    <p>You and Gonca have one of the strongest founder stories on LinkedIn right now and you're not telling it. A two-sister founding team in AI is rare. One is the CEO with 10+ years in management consulting. One is the CTO with 20 years as a data scientist. That combination is not accidental. It is a deliberate, trust-based partnership that most founding teams can only imitate.</p>
+    <p><strong>Your current LinkedIn presence is event updates and partner announcements.</strong> These are fine. They are not memorable. The M&S case study, the IKEA integration, the cookie-deprecation problem you were built to solve before everyone else knew it mattered, none of that is showing up in a way that compounds.</p>
+    <p>You will raise a Series B. Enterprise retailers are your buyers. When their procurement teams diligence you, this story should already be in the room.</p>
+  </div>
+</section>
+
+<section class="five-section">
+  <div class="section-label">What a personal brand actually does for Quin</div>
+  <div class="five-grid">
+    <div class="five-item">
+      <div class="five-num">One</div>
+      <div class="five-title">Shorter sales cycles</div>
+      <div class="five-body">When an enterprise retail CMO Googles you before a meeting and finds <strong>credible, specific thinking on personalization and privacy</strong>, the meeting starts at trust. Competitors in your space have mostly corporate brands — no founder voice. You can change this dynamic before your next deal.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">Two</div>
+      <div class="five-title">Lower CAC</div>
+      <div class="five-body">Retail tech buyers are on LinkedIn. <strong>Content-sourced leads close at 3-5x the rate of cold outbound.</strong> One post about the cookie deprecation reality check, the kind only a founder with IKEA's behavioral data can write, reaches buyers your SDR sequences are still warming up.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">Three</div>
+      <div class="five-title">Faster Series B</div>
+      <div class="five-body">VCs research founders before every meeting. <strong>A visible founder who demonstrates category expertise publicly</strong> gets warmer intros and shorter due-diligence cycles. Your personalization + privacy-safe AI thesis is a strong one. Let VCs find it before you need to explain it in a cold email.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">Four</div>
+      <div class="five-title">Organic hiring</div>
+      <div class="five-body">The best AI engineers and enterprise sales operators <strong>follow founders they respect.</strong> You're hiring across London, Hamburg, Istanbul. A visible founder voice is a recruiting engine in all three markets — without a search firm. Saving two senior hires per year covers the entire content investment.</div>
+    </div>
+    <div class="five-item">
+      <div class="five-num">Five</div>
+      <div class="five-title">Optionality</div>
+      <div class="five-body"><strong>Your reputation compounds independently of the company.</strong> The female founder in AI who built a public voice before she needed it always has more doors. Speaking circuits, board opportunities, press coverage — these come to the founder who shows up in search, not the one who doesn't.</div>
+    </div>
+    <div class="five-item" style="background: var(--forest); color: white;">
+      <div class="five-num" style="color: rgba(255,255,255,0.35);">Note</div>
+      <div class="five-title" style="color: white;">The competitive gap</div>
+      <div class="five-body" style="color: rgba(255,255,255,0.6);">Dynamic Yield, Bloomreach, Algolia, Constructor — your main competitors have mostly corporate voices. No strong founder presence. <strong style="color: rgba(255,255,255,0.9);">You can own the category conversation</strong> in real-time personalization before anyone else claims it.</div>
+    </div>
+  </div>
+</section>
+
+<section class="results-strip">
+  <div class="results-label">What Diya has driven for founders like you</div>
+  <div class="results-inner">
+    <div class="result-stat">
+      <div class="result-num">7<span>M+</span></div>
+      <div class="result-desc">LinkedIn impressions driven<br>for one founder</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-num">26 <span>→</span> 50<span>K</span></div>
+      <div class="result-desc">Followers grown<br>on the same account</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-num">6<span>%</span></div>
+      <div class="result-desc">Sales pipeline lift<br>from socials</div>
+    </div>
+  </div>
+</section>
+
+<section class="posts-section">
+  <div class="section-label">Three posts written in your voice — free, to keep</div>
+  <div class="posts-row">
+    <div class="post-card">
+      <div class="post-num">Post 01 — Cookie deprecation reality check</div>
+      <div class="post-text">
+        <p>We were on a call with a retail CMO last week.</p>
+        <p>She told us her team had built their entire 2026 personalization plan around third-party cookies that no longer work in 40% of the web.</p>
+        <p>She did not know it.</p>
+        <p>This is happening at almost every retailer we talk to.</p>
+        <p>The deprecation timeline has been pushed back so many times that everyone stopped paying attention.</p>
+        <p>Then it actually started happening.</p>
+        <p>The behavioral data you used to rent from third parties is gone.</p>
+        <p>The first party data you own is not enough on its own.</p>
+        <p>What works now is real-time prediction from the signals you can still see on your own site.</p>
+        <p>Clicks. Scroll patterns. Time on page.</p>
+        <p>This is exactly what we built Quin to do.</p>
+        <p>Not because we predicted this perfectly, because Gonca and I never trusted borrowed data in the first place.</p>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-num">Post 02 — Building with my sister</div>
+      <div class="post-text">
+        <p>I get this question almost every week.</p>
+        <p>"What is it like building a company with your sister?"</p>
+        <p>When Gonca and I started Quin, the warning we got most often was that family co-founder relationships are the riskiest of all.</p>
+        <p>Disagreements get personal. Holidays get awkward.</p>
+        <p>Five years in, here is the truth.</p>
+        <p>Building with someone who has known me since I was three years old is the single biggest advantage I have.</p>
+        <p>There is no political layer.</p>
+        <p>There is no managing up. We get from disagreement to decision in 20 minutes because we do not need to perform for each other.</p>
+        <p>The cost is real too.</p>
+        <p>My mother has banned both of us from talking about Quin at her house. Twice.</p>
+        <p>If you are thinking about building with a family member, the only test that matters: can you tell them they are wrong, in front of other people, without it breaking the relationship?</p>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-num">Post 03 — What M&S and IKEA actually want from AI</div>
+      <div class="post-text">
+        <p>People assume what enterprise brands want from AI is the future of magical personalization.</p>
+        <p>The Black Mirror version where the AI predicts what you want before you do.</p>
+        <p>That is not what they want. At all.</p>
+        <p>What M&S and IKEA actually ask for, every meeting, every quarter: show me which 5% of visitors are about to bounce.</p>
+        <p>Show me which 1% is buying right now if we just stay out of their way.</p>
+        <p>The boring version of AI is the version that wins in enterprise retail.</p>
+        <p>The flashy version wins at pitch competitions.</p>
+        <p>Three years of building Quin taught me this the hard way.</p>
+        <p>We burned runway on features no one used.</p>
+        <p>The version of AI that quietly increases conversion by 3% across 10 million sessions is worth more than the version that makes 10 people on Twitter say wow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div class="cta-left">
+    <div class="section-label">Ready when you are</div>
+    <div class="cta-title">The sister-led<br>AI story is<br><em>yours to tell.</em></div>
+    <p class="cta-body">You have M&S, IKEA, Calvin Klein, Under Armour, Decathlon. A privacy-safe AI thesis that's landed ahead of the market. A founding story no one else has. This is a 20-minute conversation to see if the timing is right.</p>
+  </div>
+  <div class="cta-right">
+    <div class="cta-right-label">What you get</div>
+    <ul class="cta-right-points">
+      <li>Shorter sales cycles with warm enterprise buyers</li>
+      <li>Lower CAC versus cold outbound</li>
+      <li>Series B narrative built before you need it</li>
+      <li>Organic hiring funnel in London, Hamburg, Istanbul</li>
+      <li>A voice that compounds beyond Quin</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <span>Diya Bhatia · Founder Personal Brand Strategist</span>
+  <span>Built for Gulsah Gulser · Quin AI</span>
+</footer>
+
+</body>
+</html>
