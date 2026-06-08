@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diya Bhatia, LinkedIn Content Writer for Forj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0d0d0d;
+    --white: #fafaf7;
+    --cream: #f4f1e8;
+    --warm-gray: #8a8580;
+    --accent: #1a1a1a;
+    --gold: #c49a3c;
+    --gold-light: #e8d5a0;
+    --border: rgba(0,0,0,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  nav .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  nav .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--warm-gray);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: var(--cream);
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 820px; }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--warm-gray);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #555;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: #333; transform: translateY(-1px); }
+  .hero-cta svg { width: 16px; height: 16px; }
+
+  /* STATS BAND */
+  .stats-band {
+    background: var(--black);
+    color: var(--white);
+    padding: 2.5rem 3rem;
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+  }
+  .stat-item {
+    flex: 1;
+    padding: 0 2rem;
+    border-right: 0.5px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    color: var(--gold-light);
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.03em;
+  }
+
+  /* SECTION SHARED */
+  section { padding: 5rem 3rem; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #666;
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* WHY FORJ */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    margin-top: 3rem;
+  }
+  .why-card {
+    background: var(--white);
+    padding: 2.25rem;
+    position: relative;
+  }
+  .why-card-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .why-card h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+  .why-card p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* WINS, PROOF */
+  .wins-section { background: var(--cream); }
+  .wins-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .win-card {
+    background: var(--white);
+    padding: 1.75rem;
+    border: 0.5px solid rgba(0,0,0,0.07);
+  }
+  .win-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: #fdf5e4;
+    padding: 3px 10px;
+    margin-bottom: 1rem;
+  }
+  .win-card p {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.7;
+  }
+  .win-card .win-metric {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--black);
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+
+  /* OUTREACH PROOF */
+  .message-thread {
+    background: var(--white);
+    border: 0.5px solid rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    max-width: 620px;
+  }
+  .thread-context {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .msg-bubble {
+    background: var(--cream);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    color: #333;
+    line-height: 1.7;
+    position: relative;
+  }
+  .msg-bubble.reply {
+    background: var(--black);
+    color: var(--white);
+    margin-left: 2rem;
+  }
+  .msg-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    color: var(--gold);
+  }
+  .msg-bubble.reply .msg-label { color: var(--gold-light); }
+
+  /* SAMPLE POSTS */
+  .posts-section { background: var(--white); }
+  .post-card {
+    border: 0.5px solid rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    max-width: 680px;
+  }
+  .post-card::before {
+    content: attr(data-num);
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem;
+    color: var(--cream);
+    position: absolute;
+    top: -0.5rem;
+    right: 1.5rem;
+    line-height: 1;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .post-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .post-meta .name {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .post-meta .title-line {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+  }
+  .post-body {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: #2a2a2a;
+    position: relative;
+    z-index: 1;
+  }
+  .post-body p { margin-bottom: 0.85rem; }
+  .post-body p:last-child { margin-bottom: 0; }
+  .post-tags {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .post-tag {
+    font-size: 0.72rem;
+    color: #2563eb;
+    font-weight: 400;
+  }
+
+  /* THE ASK */
+  .ask-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 6rem 3rem;
+  }
+  .ask-section h2 {
+    color: var(--white);
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+  }
+  .ask-section p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .ask-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.9rem 2.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .ask-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    nav .nav-links { display: none; }
+    .hero { padding: 6rem 1.25rem 3rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .stats-band { padding: 2rem 1.25rem; flex-wrap: wrap; gap: 1.5rem; }
+    .stat-item { padding: 0; border-right: none; flex-basis: 45%; }
+    .why-grid { grid-template-columns: 1fr; }
+    .wins-grid { grid-template-columns: 1fr; }
+    .post-card::before { font-size: 3.5rem; top: 0; right: 1rem; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+
+  .screenshot-wrap {
+    margin: 1.5rem 0;
+    border: 0.5px solid rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  .screenshot-wrap img {
+    width: 100%;
+    display: block;
+  }
+  .screenshot-caption {
+    font-size: 0.72rem;
+    color: var(--warm-gray);
+    padding: 0.5rem 0.75rem;
+    background: var(--cream);
+    border-top: 0.5px solid rgba(0,0,0,0.07);
+    letter-spacing: 0.03em;
+  }
+  .screenshots-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  @media(max-width:640px){ .screenshots-row { grid-template-columns: 1fr; } }
+
+
+  .forj-context {
+    margin-top: 2.5rem;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.75rem;
+    max-width: 620px;
+  }
+  .forj-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .forj-text {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.75;
+    margin-bottom: 0.85rem;
+  }
+  .forj-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+  }
+  .forj-link:hover { color: var(--gold); }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Diya Bhatia</div>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">For Matt Huang · Forj</p>
+    <h1>I turn founder<br>words into<br><em>founder wealth.</em></h1>
+    <p class="hero-sub">Five years of writing for the people building things that matter. 7M+ impressions, one founder's pipeline moved by 6%, and a single post that hit 413K. None of it was accidental.</p>
+
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stat-item">
+    <div class="stat-num">7M+</div>
+    <div class="stat-label">Impressions driven for a single founder</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">26K→50K</div>
+    <div class="stat-label">Follower growth (+92%) for primary client</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">+6%</div>
+    <div class="stat-label">Sales pipeline lift attributed to LinkedIn</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">413K</div>
+    <div class="stat-label">Impressions on a single post</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4.5L</div>
+    <div class="stat-label">Impressions in 24 days for a second founder</div>
+  </div>
+</div>
+
+<!-- WHY FORJ -->
+<section>
+  <p class="section-label">Why this role</p>
+  <h2>Forj isn't just<br>another agency gig.</h2>
+  <p class="section-intro">You built Forj because you noticed something most agencies miss: a founder's real voice, the one they use in a room with someone they respect, is worth more than any polished campaign. I noticed the same thing. That's why I'm here.</p>
+  <div class="forj-context">
+    <div class="forj-context-inner">
+      <p class="forj-label">What Forj does differently</p>
+      <p class="forj-text">Forj works with VC-backed B2B SaaS founders, people backed by a16z, Slow Ventures, LAUNCH, Bullpen Capital. These aren't founders who need more content. They need someone who can sit with their ideas, find the thread worth pulling, and write it in a way that makes the right people lean forward. I've been doing exactly that for five years. The accounts I've managed don't look like each other because the founders aren't like each other. That's the point.</p>
+      <a href="https://forjmedia.io" target="_blank" class="forj-link">forjmedia.io ↗</a>
+    </div>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-card-num">01</div>
+      <h3>I think about founder voice the way founders think about product</h3>
+      <p>The best post I've ever written wasn't clever. It was honest. One founder, one real moment, one thing their ICP had been feeling but hadn't seen said clearly. That's the bar I hold every draft to.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">02</div>
+      <h3>I know what AI-generated content looks like, because I build the systems that produce it</h3>
+      <p>I work with Make.com and n8n daily. I know exactly where the shortcuts are, and exactly why taking them would kill the thing that makes founder content work. There's no substitute for a real point of view written by a real person who did the thinking.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">03</div>
+      <h3>Feedback doesn't slow me down, it speeds me up</h3>
+      <p>I ran editorial operations and managed teams of writers. When a client sends a note, I'm not looking for what to defend. I'm looking for what I missed about their voice. That's the difference between someone who can take feedback and someone who uses it.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">04</div>
+      <h3>Seven accounts isn't a workload problem, it's a systems problem</h3>
+      <p>I currently run multiple founder accounts at once. Different voices, different industries, different things they're trying to be known for. The only way it works is if you build the scaffolding right from the start. I have. I enjoy it, honestly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF: WINS -->
+<section class="wins-section" id="proof">
+  <p class="section-label">The numbers</p>
+  <h2>The numbers,<br>if you want them.</h2>
+  <p class="section-intro">I don't lead with metrics because I think they're the most interesting thing about this work. I lead with them because they're verifiable. Every number below has a screenshot behind it.</p>
+
+  <div class="wins-grid">
+    <div class="win-card">
+      <span class="win-tag">Content growth</span>
+      <span class="win-metric">708K</span>
+      <p>Impressions over 90 days for a B2B SaaS marketing agency founder, tracked via LinkedIn analytics. Consistent upward curve with no paid amplification.</p>
+    </div>
+    <div class="win-card">
+      <span class="win-tag">Single post</span>
+      <span class="win-metric">413K</span>
+      <p>One post. 2,975 reactions. 132 comments. 101 reposts. The client sent a personal "well done" to flag the result. Organic reach, no boosting.</p>
+    </div>
+    <div class="win-card">
+      <span class="win-tag">Velocity</span>
+      <span class="win-metric">4.5L</span>
+      <p>Impressions in 24 days for a B2B Tech Design founder. Different voice, different industry, same approach: specific POV, no filler.</p>
+    </div>
+    <div class="win-card">
+      <span class="win-tag">Pipeline impact</span>
+      <span class="win-metric">+6%</span>
+      <p>Measurable sales pipeline lift in 28 days directly attributed to LinkedIn activity. Rare to see content tracked this cleanly to revenue, because most content teams don't instrument it.</p>
+    </div>
+    <div class="win-card">
+      <span class="win-tag">Follower growth</span>
+      <span class="win-metric">+92%</span>
+      <p>26,000 to 50,000 followers for the primary account over the engagement period. Organic. No paid follower acquisition.</p>
+    </div>
+    <div class="win-card">
+      <span class="win-tag">Press record</span>
+      <span class="win-metric">6 outlets</span>
+      <p>TechCrunch, LiveMint, Hindustan Times, The Statesman, MoneyControl, The Week. Earned media that shows up in a Google search, the kind of credibility that warms cold LinkedIn DMs.</p>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- PROOF: OUTREACH WINS -->
+<section id="outreach">
+  <p class="section-label">Outreach that converts</p>
+  <h2>Writing that gets<br>people to respond.</h2>
+  <p class="section-intro">Good outreach is just good writing with a clearer deadline. These are real conversations, names masked. What made them work isn't the tactics, it's that they treated the other person like a person.</p>
+
+  <div class="message-thread">
+    <div class="thread-context">Conversation 1, CEO at an AI customer engagement platform · May 2025</div>
+    <div class="msg-bubble">
+      <div class="msg-label">Outbound message</div>
+      Hi [Name], Something shifted in how B2B SaaS companies use LinkedIn in 2025, the ones winning pipeline aren't the best product, they're the most specific voice. I saw you've worked with Mokobara and a lot of retail brands. Just happened to get my Mokobara suitcase delivered today. A great coincidence.<br><br>I see your ICP is retail. I work with Vymo, LeadSquared, and used to work with EasyRewardz on their GTM.<br><br>Let me know if you need any marketing help, happy to hop on a call.
+    </div>
+    <div class="msg-bubble reply">
+      <div class="msg-label">Their reply</div>
+      "Hey Karthick, a very well crafted message I must say. Full marks 💯<br><br>I'm at [email]. Could you please drop me an email and I'll connect you with Ayushmaan my co-founder who leads marketing for us."
+    </div>
+  </div>
+</div>
+</div>
+
+  <div class="message-thread">
+    <div class="thread-context">Conversation 2, CEO, Data Governance SaaS · Georgia, US</div>
+    <div class="msg-bubble">
+      <div class="msg-label">Outbound message</div>
+      Hi [Name], We helped Atlan scale their organic and AI search traffic. They went from 17,000 to more than 100K a month.<br><br>They also get 5 to 7 MQLs a day from LLMs, most of the leads coming from ChatGPT.<br><br>Is this of interest?
+    </div>
+    <div class="msg-bubble reply">
+      <div class="msg-label">Their reply</div>
+      "yes", and then shared a Calendly link.
+    </div>
+  </div>
+</div>
+
+  <div class="message-thread">
+    <div class="thread-context">Conversation 3, PromptQL (NodeOps) · Full audit → meeting booked</div>
+    <div class="msg-bubble">
+      <div class="msg-label">Outbound message</div>
+      Hi [Name], We ran a detailed audit for NodeOps covering page... We work with Hasura now PromptQL, helped them scale to 100K organic clicks.<br><br>Regards, Karthick
+    </div>
+    <div class="msg-bubble reply">
+      <div class="msg-label">Their reply</div>
+      "Hey Karthick, Yes, good to be connected. We must surely chat."
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- SAMPLE POSTS FOR MATT -->
+<section class="posts-section" id="posts">
+  <p class="section-label">Written for Matt Huang · Forj</p>
+  <h2>Three posts I'd<br>write for you.</h2>
+  <p class="section-intro">I spent time reading your posts, your interviews, and what Forj is actually about. These are three drafts written in what I think your voice could be. Take them apart if they're wrong. That's useful too.</p>
+
+  <div class="post-card" data-num="01">
+    <div class="post-header">
+      <div class="post-avatar">MH</div>
+      <div class="post-meta">
+        <div class="name">Matt Huang</div>
+        <div class="title-line">Founder @ Forj · B2B LinkedIn for VC-backed founders</div>
+      </div>
+    </div>
+    <div class="post-body">
+      <p>A client's post hit 413K impressions last month. He texted me at 11pm when he saw it.</p>
+      <p>The post wasn't about his product. It wasn't about his industry. It was about a management decision he almost made wrong, and what stopped him.</p>
+      <p>This is the paradox of founder content on LinkedIn:</p>
+      <p>The posts that feel "too personal" or "not business enough" are usually the ones that drive the most pipeline.</p>
+      <p>Because buyers don't buy software. They buy the person behind it.</p>
+      <p>If a VP of Sales at a Series B company reads about your management philosophy and recognises themselves in it, they don't think "interesting thought leader." They think "I want this person in our corner."</p>
+      <p>We've seen it generate 6% pipeline lift in 28 days. Not from promotional posts. From the kind of writing that makes someone forward your post to their CEO with "we should talk to these guys."</p>
+      <p>Stop asking "is this post professional enough?" Start asking "is this post true?"</p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">#FounderBrand</span>
+      <span class="post-tag">#B2BSales</span>
+      <span class="post-tag">#ContentMarketing</span>
+    </div>
+  </div>
+
+  <div class="post-card" data-num="02">
+    <div class="post-header">
+      <div class="post-avatar">MH</div>
+      <div class="post-meta">
+        <div class="name">Matt Huang</div>
+        <div class="title-line">Founder @ Forj · B2B LinkedIn for VC-backed founders</div>
+      </div>
+    </div>
+    <div class="post-body">
+      <p>I reviewed 50 founder LinkedIn profiles last month.</p>
+      <p>40 of them had this exact problem.</p>
+      <p>Their headline read like a job description.<br>Their summary read like a pitch deck.<br>Their posts read like a newsletter nobody asked for.</p>
+      <p>The 10 that were working?</p>
+      <p>They wrote like they were texting a smart friend who happened to be their ideal client.</p>
+      <p>Not casual. Not sloppy. Just direct.</p>
+      <p>No "I'm thrilled to announce."<br>No "Here are 7 frameworks for X."<br>No "As a leader, I've learned..."</p>
+      <p>Just: here's what happened, here's what I thought about it, here's why it matters to you.</p>
+      <p>That's it. That's the whole playbook.</p>
+      <p>The founders winning on LinkedIn aren't better writers.<br>They stopped writing for LinkedIn and started writing for one person.</p>
+      <p>Who's the one person you're writing for?</p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">#FounderBrand</span>
+      <span class="post-tag">#B2BMarketing</span>
+      <span class="post-tag">#LinkedInGrowth</span>
+    </div>
+  </div>
+
+  <div class="post-card" data-num="03">
+    <div class="post-header">
+      <div class="post-avatar">MH</div>
+      <div class="post-meta">
+        <div class="name">Matt Huang</div>
+        <div class="title-line">Founder @ Forj · B2B LinkedIn for VC-backed founders</div>
+      </div>
+    </div>
+    <div class="post-body">
+      <p>Last year I turned down a client with 200K followers.</p>
+      <p>His content was everywhere. His pipeline was empty.</p>
+      <p>Because here's the thing about LinkedIn vanity metrics that nobody says out loud:</p>
+      <p>Reach without reputation is noise.</p>
+      <p>You can hit 500K impressions a month and still have your CRO asking why inbound is flat.</p>
+      <p>The founders I work with don't want more followers.<br>They want the right 50 people to read their post on a Tuesday morning and think: "I need to work with this person."</p>
+      <p>That's a completely different brief.</p>
+      <p>It changes what you write about.<br>It changes how long you go.<br>It changes whether you post a list or a story.</p>
+      <p>We've driven a 6% pipeline lift in 28 days for one client.<br>Not because the content went viral.<br>Because the right people read it and recognised something true.</p>
+      <p>Virality is an outcome. Reputation is the strategy.</p>
+      <p>Which one is your content actually optimised for?</p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">#B2BSaaS</span>
+      <span class="post-tag">#FounderMarketing</span>
+      <span class="post-tag">#LinkedInStrategy</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- THE ASK -->
+<section class="ask-section" id="ask">
+  <h2>Let's find out<br>if this is a fit.</h2>
+  <p>I'm not going to tell you I'm the best writer you'll ever meet. I'm going to tell you that I care about this kind of work more than most people do, I move fast, and I get better every time someone tells me I got it wrong.</p>
+  <p>Let's chat for 10 when you're free.</p>
+</section>
+
+<footer>
+  <span>Diya Bhatia, LinkedIn content writer</span>
+  <span>Applying for Forj · June 2026</span>
+</footer>
+
+</body>
+</html>
